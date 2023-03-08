@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Home</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<h2>Add New Trade</h2>
+	</div>
+
+	<div class="row">
+		<form action="#" th:action="@{/trade/validate}" th:object="${trade}" method="post" class="form-horizontal" style="width: 100%">
+			<!--
+			TODO: Create a form to input the values of Trade, there are 2 buttons: Save data and Cancel to the list Trade
+			 -->
+			<div class="form-group">
+				<label for="account" class="col-sm-2 col-form-label">Account</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" required id="account" th:field="*{account}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="type" class="col-sm-2 col-form-label">Type</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" required id="type" th:field="*{type}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="buyQuantity" class="col-sm-2 col-form-label">Buy Quantity</label>
+				<div class="col-sm-5">
+					<input type="number" class="form-control" id="buyQuantity" th:field="*{buyQuantity}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-5">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<a href="/trade/list" class="btn btn-danger">Cancel</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
+</html>
