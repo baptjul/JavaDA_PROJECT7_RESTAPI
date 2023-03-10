@@ -45,7 +45,7 @@
 				<th th:text="${rating.sandPRating}"></th>
 				<th th:text="${rating.fitchRating}"></th>
 				<th th:text="${rating.orderNumber}"></th>
-				<th>
+				<th style="width: 15%" class="text-center">
 					<a th:href="@{/rating/update/{id}(id=${rating.getId()})}" class="btn btn-primary">Edit</a>
 					<a th:href="@{/rating/delete/{id}(id=${rating.getId()})}" class="btn btn-danger">Delete</a>
 				</th>

@@ -49,7 +49,7 @@
 				<th th:text="${ruleName.template}"></th>
 				<th th:text="${ruleName.sqlStr}"></th>
 				<th th:text="${ruleName.sqlPart}"></th>
-				<th>
+				<th style="width: 15%" class="text-center">
 					<a th:href="@{/ruleName/update/{id}(id=${ruleName.getId()})}" class="btn btn-primary">Edit</a>
 					<a th:href="@{/ruleName/delete/{id}(id=${ruleName.getId()})}" class="btn btn-danger">Delete</a>
 				</th>

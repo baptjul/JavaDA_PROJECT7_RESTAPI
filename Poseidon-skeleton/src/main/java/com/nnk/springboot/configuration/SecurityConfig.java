@@ -17,14 +17,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Override
+    @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -36,9 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/bidList/list")
                 .and()
                 .oauth2Login()
+                .defaultSuccessUrl("/bidList/list")
                 .and()
-                .logout();
+                .logout()
+                .logoutSuccessUrl("/");
     }
 }

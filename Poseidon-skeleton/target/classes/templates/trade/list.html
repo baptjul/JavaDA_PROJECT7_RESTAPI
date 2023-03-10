@@ -43,7 +43,7 @@
 					<th th:text="${trade.account}"></th>
 					<th th:text="${trade.type}"></th>
 					<th th:text="${trade.buyQuantity}"></th>
-					<th>
+					<th style="width: 15%" class="text-center">
 						<a th:href="@{/trade/update/{id}(id=${trade.getTradeId()})}" class="btn btn-primary">Edit</a>
 						<a th:href="@{/trade/delete/{id}(id=${trade.getTradeId()})}" class="btn btn-danger">Delete</a>
 					</th>

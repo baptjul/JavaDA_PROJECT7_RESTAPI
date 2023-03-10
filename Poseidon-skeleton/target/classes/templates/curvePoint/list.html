@@ -43,7 +43,7 @@
 				<th th:text="${curvePoint.curveId}"></th>
 				<th th:text="${curvePoint.term}"></th>
 				<th th:text="${curvePoint.value}"></th>
-				<th>
+				<th style="width: 15%" class="text-center">
 					<a th:href="@{/curvePoint/update/{id}(id=${curvePoint.getId()})}" class="btn btn-primary">Edit</a>
 					<a th:href="@{/curvePoint/delete/{id}(id=${curvePoint.getId()})}" class="btn btn-danger">Delete</a>
 				</th>
