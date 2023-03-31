@@ -27,7 +27,7 @@ public class CurveService {
 
     public CurvePoint updateCurvePoint(Integer id, CurvePoint updatedCurvePoint) throws IllegalAccessException {
         CurvePoint targetedCurvePoint = getCurvePointById(id);
-        if  (updatedCurvePoint != null) {
+        if (updatedCurvePoint != null) {
             Field[] fields = CurvePoint.class.getDeclaredFields();
 
             for (Field field : fields) {

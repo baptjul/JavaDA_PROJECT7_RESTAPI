@@ -6,7 +6,6 @@ import java.sql.Date;
 @Entity
 @Table(name = "Curvepoint")
 public class CurvePoint {
-    // TODO: Map columns in data table CURVEPOINT with corresponding java fields
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

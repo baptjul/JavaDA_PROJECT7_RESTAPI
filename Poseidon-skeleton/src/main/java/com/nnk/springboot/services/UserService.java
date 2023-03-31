@@ -1,6 +1,5 @@
 package com.nnk.springboot.services;
 
-import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,17 +29,17 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Collections.singleton(new SimpleGrantedAuthority(user.getRole())));
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserById(Integer id)  {
+    public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User addUser(User user){
+    public User addUser(User user) {
         List<User> allUser = getAllUsers();
-        for (User existingUser : allUser){
+        for (User existingUser : allUser) {
             if (existingUser.getUsername().equals(user.getUsername())) {
                 return null;
             }

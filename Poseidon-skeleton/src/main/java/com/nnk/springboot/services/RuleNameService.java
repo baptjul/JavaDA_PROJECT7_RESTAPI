@@ -1,6 +1,5 @@
 package com.nnk.springboot.services;
 
-import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +46,10 @@ public class RuleNameService {
     }
 
     public List<RuleName> deleteRuleName(Integer id) {
-        RuleName targetedRule= getRuleNameById(id);
+        RuleName targetedRule = getRuleNameById(id);
         if (targetedRule != null) {
             ruleNameRepository.deleteById(id);
         }
-        return  getAllRuleNames();
+        return getAllRuleNames();
     }
 }

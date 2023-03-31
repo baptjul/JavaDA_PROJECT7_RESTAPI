@@ -28,7 +28,7 @@ public class BidListService {
     }
 
     public BidList addBidForm(BidList bid) {
-        if  (bid != null && bid.getAccount() != null && bid.getType() != null) {
+        if (bid != null && bid.getAccount() != null && bid.getType() != null) {
             return bidListRepository.save(bid);
         } else {
             return bid;
@@ -37,7 +37,7 @@ public class BidListService {
 
     public BidList updateBid(Integer id, BidList bid) throws IllegalAccessException {
         BidList bidTarget = getBidById(id);
-        if  (bid != null && bid.getAccount() != null && bid.getType() != null) {
+        if (bid != null && bid.getAccount() != null && bid.getType() != null) {
             Field[] fields = BidList.class.getDeclaredFields();
 
             for (Field field : fields) {

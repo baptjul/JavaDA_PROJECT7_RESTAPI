@@ -1,9 +1,6 @@
 package com.nnk.springboot.services;
 
-import com.nnk.springboot.domain.Rating;
-import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.domain.Trade;
-import com.nnk.springboot.repositories.RuleNameRepository;
 import com.nnk.springboot.repositories.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +50,6 @@ public class TradeService {
         if (targetedTrade != null) {
             tradeRepository.deleteById(id);
         }
-        return  getAllTrades();
+        return getAllTrades();
     }
 }

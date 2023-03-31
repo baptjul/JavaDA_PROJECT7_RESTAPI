@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>Home</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-	<div class="row">
-		<h2>Update Bid</h2>
-	</div>
+    <div class="row">
+        <h2>Update Bid</h2>
+    </div>
 
-	<div class="row">
-		<form action="#" th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to edit the values of Bid, there are 2 buttons: Update data and Cancel to the list Bid
-			 -->
-			<div class=" form-group">
-				<label for="account" class="col-sm-2 col-form-label">Account</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" required id="account" th:field="*{account}" />
-				</div>
-			</div>
-			<div class=" form-group">
-				<label for="type" class="col-sm-2 col-form-label">Type</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" required id="type" th:field="*{type}" />
-				</div>
-			</div>
-			<div class=" form-group">
-				<label for="bidQuantity" class="col-sm-2 col-form-label">Bid Quantity</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="bidQuantity" th:field="*{bidQuantity}" />
-				</div>
-			</div>
-			<div class=" form-group ">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5">
-					<button type="submit" class="btn btn-primary">Save</button>
-					<a href="/bidList/list" class="btn btn-danger">Cancel</a>
-				</div>
-			</div>
-		</form>
-	</div>
+    <div class="row">
+        <form action="#" th:action="@{/bidList/update/{id}(id=${bidList.bidListId})}" th:object="${bidList}"
+              method="post" class="form-horizontal" style="width: 100%">
+            <div class=" form-group">
+                <label for="account" class="col-sm-2 col-form-label">Account</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" required id="account" th:field="*{account}"/>
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="type" class="col-sm-2 col-form-label">Type</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" required id="type" th:field="*{type}"/>
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="bidQuantity" class="col-sm-2 col-form-label">Bid Quantity</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="bidQuantity" th:field="*{bidQuantity}"/>
+                </div>
+            </div>
+            <div class=" form-group ">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/bidList/list" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>
 </body>

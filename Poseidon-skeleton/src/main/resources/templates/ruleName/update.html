@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8"/>
-	<title>Home</title>
-	<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
 
-	<div class="row">
-		<h2>Update New Rule</h2>
-	</div>
+    <div class="row">
+        <h2>Update New Rule</h2>
+    </div>
 
-	<div class="row">
-		<form action="#" th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to edit the values of RuleName, there are 2 buttons: Update data and Cancel to the RuleName
-			 -->
-			<div class="form-group">
-				<label for="name" class="col-sm-2 col-form-label">Rule name</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="name" th:field="*{name}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="description" class="col-sm-2 col-form-label">Description</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="description" th:field="*{description}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="json" class="col-sm-2 col-form-label">Json</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="json" th:field="*{json}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="template" class="col-sm-2 col-form-label">Template</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="template" th:field="*{template}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="sqlStr" class="col-sm-2 col-form-label">Sql</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="sqlStr" th:field="*{sqlStr}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="sqlPart" class="col-sm-2 col-form-label">Sql Part</label>
-				<div class="col-sm-5">
-					<input type="text" class="form-control" id="sqlPart" th:field="*{sqlPart}" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-5">
-					<button type="submit" class="btn btn-primary">Save</button>
-					<a href="/ruleName/list" class="btn btn-danger">Cancel</a>
-				</div>
-			</div>
-		</form>
-	</div>
+    <div class="row">
+        <form action="#" th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post"
+              class="form-horizontal" style="width: 100%">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 col-form-label">Rule name</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="name" th:field="*{name}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="description" th:field="*{description}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="json" class="col-sm-2 col-form-label">Json</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="json" th:field="*{json}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="template" class="col-sm-2 col-form-label">Template</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="template" th:field="*{template}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sqlStr" class="col-sm-2 col-form-label">Sql</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="sqlStr" th:field="*{sqlStr}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sqlPart" class="col-sm-2 col-form-label">Sql Part</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="sqlPart" th:field="*{sqlPart}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/ruleName/list" class="btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>
 </body>
