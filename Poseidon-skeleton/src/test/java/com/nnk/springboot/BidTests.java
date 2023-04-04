@@ -1,6 +1,7 @@
 package com.nnk.springboot;
 
 import com.nnk.springboot.domain.BidList;
+import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.repositories.BidListRepository;
 import static org.junit.Assert.*;
 import com.nnk.springboot.services.BidListService;
@@ -11,7 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.junit.jupiter.api.BeforeEach;
 
-
+/**
+ * Tests for the {@link BidListService} class
+ *
+ * To run these tests, you need to use a Spring test runner
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class BidTests {
@@ -21,12 +26,18 @@ public class BidTests {
 	@Autowired
 	private BidListRepository bidListRepository;
 
+	/**
+	 * Deletes all bid before each test
+	 */
 	@BeforeEach
 	void setup() {
 		bidListRepository.deleteAll();
 		bidListRepository.flush();
 	}
 
+	/**
+	 * Test addBidForm method
+	 */
 	@Test
 	public void addBidFormTest() {
 		BidList bid = new BidList();
@@ -40,6 +51,9 @@ public class BidTests {
 		assertEquals("Account Test", newBid.getAccount());
 	}
 
+	/**
+	 * Test updateBid method
+	 */
 	@Test
 	public void updateBidTest() throws IllegalAccessException {
 		BidList bid = new BidList();
@@ -60,7 +74,9 @@ public class BidTests {
 		assertEquals(20d, updatedBid.getBidQuantity(), 0.0001d);
 	}
 
-
+	/**
+	 * Test getAllBids method
+	 */
 	@Test
 	public void getAllBidsTest() {
 		BidList firstBid = new BidList();
@@ -78,6 +94,9 @@ public class BidTests {
 		assertTrue(bidListService.getAllBids().size() > 0);
 	}
 
+	/**
+	 * Test deleteBid method
+	 */
 	@Test
 	public void deleteBidTest() {
 		BidList firstBid = new BidList();

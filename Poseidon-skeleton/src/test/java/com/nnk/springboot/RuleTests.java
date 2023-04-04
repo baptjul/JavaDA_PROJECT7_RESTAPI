@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
+import com.nnk.springboot.services.RatingService;
 import com.nnk.springboot.services.RuleNameService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNull;
 
+/**
+ * Tests for the {@link RuleNameService} class
+ *
+ * To run these tests, you need to use a Spring test runner
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class RuleTests {
@@ -22,13 +28,18 @@ public class RuleTests {
 	@Autowired
 	private RuleNameRepository ruleNameRepository;
 
+	/**
+	 * Deletes all ruleName before each test
+	 */
 	@BeforeEach
 	void setup() {
 		ruleNameRepository.deleteAll();
 		ruleNameRepository.flush();
 	}
 
-
+	/**
+	 * Test saveRuleName method
+	 */
 	@Test
 	public void saveRuleNameTest() {
 		RuleName ruleName = new RuleName();
@@ -45,6 +56,9 @@ public class RuleTests {
 		assertEquals("Rule Name", newRuleName.getName());
 	}
 
+	/**
+	 * Test updateRuleName method
+	 */
 	@Test
 	public void updateRuleNameTest() throws IllegalAccessException {
 		RuleName ruleName = new RuleName();
@@ -71,6 +85,9 @@ public class RuleTests {
 		assertEquals("Rule Name Update", updatedRuleName.getName());
 	}
 
+	/**
+	 * Test getAllRuleNames method
+	 */
 	@Test
 	public void getAllRuleNamesTest() {
 		RuleName firstRuleName = new RuleName();
@@ -93,7 +110,10 @@ public class RuleTests {
 
 		assertTrue(ruleNameService.getAllRuleNames().size() > 0);
 	}
-	//
+
+	/**
+	 * Test deleteRuleName method
+	 */
 	@Test
 	public void deleteRuleNameTest() {
 		RuleName firstRuleName = new RuleName();

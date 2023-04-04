@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
+import com.nnk.springboot.services.CurveService;
 import com.nnk.springboot.services.RatingService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNull;
 
+/**
+ * Tests for the {@link RatingService} class
+ *
+ * To run these tests, you need to use a Spring test runner
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class RatingTests {
@@ -22,12 +28,18 @@ public class RatingTests {
 	@Autowired
 	private RatingRepository ratingRepository;
 
+	/**
+	 * Deletes all ratings before each test
+	 */
 	@BeforeEach
 	void setup() {
 		ratingRepository.deleteAll();
 		ratingRepository.flush();
 	}
 
+	/**
+	 * Test saveRating method
+	 */
 	@Test
 	public void saveRatingTest() {
 		Rating rating = new Rating();
@@ -42,6 +54,9 @@ public class RatingTests {
 		assertEquals(10, newRating.getOrderNumber(), 1);
 	}
 
+	/**
+	 * Test updateRating method
+	 */
 	@Test
 	public void updateRatingTest() throws IllegalAccessException {
 		Rating rating = new Rating();
@@ -64,6 +79,9 @@ public class RatingTests {
 		assertEquals(20, updatedRating.getOrderNumber(), 1);
 	}
 
+	/**
+	 * Test getAllRatings method
+	 */
 	@Test
 	public void getAllRatingsTest() {
 		Rating firstRating = new Rating();
@@ -82,7 +100,10 @@ public class RatingTests {
 
 		assertTrue(ratingService.getAllRatings().size() > 0);
 	}
-	//
+
+	/**
+	 * Test deleteRating method
+	 */
 	@Test
 	public void deleteRatingtTest() {
 		Rating firstRating = new Rating();

@@ -3,7 +3,9 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-
+/**
+ * Entity class representing a trade in the database
+ */
 @Entity
 @Table(name = "Trade")
 public class Trade {

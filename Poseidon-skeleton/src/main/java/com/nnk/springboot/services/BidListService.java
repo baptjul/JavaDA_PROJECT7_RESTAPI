@@ -8,25 +8,37 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Field;
 import java.util.List;
 
+/**
+ * Service class for managing bidList operations
+ */
 @Service
 public class BidListService {
 
     @Autowired
     private BidListRepository bidListRepository;
 
+    /**
+     * Gets a list of all bids
+     * @return the list of bids
+     */
     public List<BidList> getAllBids() {
         return bidListRepository.findAll();
     }
 
+    /**
+     * Gets a bid
+     * @param id the ID of the bid
+     * @return a single bid or null
+     */
     public BidList getBidById(Integer id) {
         return bidListRepository.findById(id).orElse(null);
     }
 
-    public List<BidList> validate(BidList bid) {
-        bidListRepository.save(bid);
-        return bidListRepository.findAll();
-    }
-
+    /**
+     * Adds a new bid
+     * @param bid bid to add
+     * @return the new bid
+     */
     public BidList addBidForm(BidList bid) {
         if (bid != null && bid.getAccount() != null && bid.getType() != null) {
             return bidListRepository.save(bid);
@@ -35,14 +47,21 @@ public class BidListService {
         }
     }
 
-    public BidList updateBid(Integer id, BidList bid) throws IllegalAccessException {
+    /**
+     * Updates a bid
+     * @param id the ID of the bid
+     * @param updatedBid the updated bid
+     * @return the updated bid
+     * @throws IllegalAccessException if updatedBid is null
+     */
+    public BidList updateBid(Integer id, BidList updatedBid) throws IllegalAccessException {
         BidList bidTarget = getBidById(id);
-        if (bid != null && bid.getAccount() != null && bid.getType() != null) {
+        if (updatedBid != null && updatedBid.getAccount() != null && updatedBid.getType() != null) {
             Field[] fields = BidList.class.getDeclaredFields();
 
             for (Field field : fields) {
                 field.setAccessible(true);
-                Object newValue = field.get(bid);
+                Object newValue = field.get(updatedBid);
                 if (newValue != null) {
                     field.set(bidTarget, newValue);
                 }
@@ -50,10 +69,15 @@ public class BidListService {
 
             return bidListRepository.save(bidTarget);
         } else {
-            return bid;
+            return updatedBid;
         }
     }
 
+    /**
+     * Deletes a bid
+     * @param id the ID of the bid
+     * @return the list of all bids
+     */
     public List<BidList> deleteBid(Integer id) {
         BidList targetedBid = getBidById(id);
         if (targetedBid != null) {

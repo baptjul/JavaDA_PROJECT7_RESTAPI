@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.repositories.TradeRepository;
+import com.nnk.springboot.services.BidListService;
 import com.nnk.springboot.services.TradeService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +15,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNull;
 
+/**
+ * Tests for the {@link TradeService} class
+ *
+ * To run these tests, you need to use a Spring test runner
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class TradeTests {
@@ -23,12 +29,18 @@ public class TradeTests {
 	@Autowired
 	private TradeRepository tradeRepository;
 
+	/**
+	 * Deletes all trades before each test
+	 */
 	@BeforeEach
 	void setup() {
 		tradeRepository.deleteAll();
 		tradeRepository.flush();
 	}
 
+	/**
+	 * Test saveTrade method
+	 */
 	@Test
 	public void saveTradeTest() {
 		Trade trade = new Trade();
@@ -41,6 +53,10 @@ public class TradeTests {
 		assertEquals("Trade Account", newTrade.getAccount());
 	}
 
+
+	/**
+	 * Test updateTrade method
+	 */
 	@Test
 	public void updateTradeTest() throws IllegalAccessException {
 		Trade trade = new Trade();
@@ -59,6 +75,10 @@ public class TradeTests {
 		assertEquals("Trade Account Update", updateTrade.getAccount());
 	}
 
+
+	/**
+	 * Test getAllTrades method
+	 */
 	@Test
 	public void getAllTradesTest() {
 		Trade firstTrade = new Trade();
@@ -74,6 +94,9 @@ public class TradeTests {
 		assertTrue(tradeService.getAllTrades().size() > 0);
 	}
 
+	/**
+	 * Test deleteTrade method
+	 */
 	@Test
 	public void deleteTradeTest() {
 		Trade firstTrade = new Trade();

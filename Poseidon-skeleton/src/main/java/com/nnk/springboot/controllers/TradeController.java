@@ -14,12 +14,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Controller requests related to the {@link Trade} entity.
+ */
 @Controller
 public class TradeController {
 
     @Autowired
     private TradeService tradeService;
 
+    /**
+     * request for all trades
+     * Retrieves a list of all trades and add them to the model for the view
+     * @param model model object
+     * @return page of the list of trades
+     */
     @RequestMapping("/trade/list")
     public String home(Model model) {
         List<Trade> allTrades = tradeService.getAllTrades();
@@ -27,6 +36,12 @@ public class TradeController {
         return "trade/list";
     }
 
+    /**
+     * GET request to add a new trade
+     * Creates a new ruleName and add it to the model for the view
+     * @param model model object
+     * @return page to add trade
+     */
     @GetMapping("/trade/add")
     public String addUser(Model model) {
         Trade newTrade = new Trade();
@@ -34,6 +49,13 @@ public class TradeController {
         return "trade/add";
     }
 
+    /**
+     * POST request for adding a ruleName
+     * @param trade trade object
+     * @param result result of validation
+     * @param model model object
+     * @return page of the list of trades or page to add trade
+     */
     @PostMapping("/trade/validate")
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -45,6 +67,12 @@ public class TradeController {
         return this.home(model);
     }
 
+    /**
+     * GET request to update a trade
+     * @param id id of the trade to update
+     * @param model model object
+     * @return page to update trade
+     */
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         Trade trade = tradeService.getTradeById(id);
@@ -52,6 +80,15 @@ public class TradeController {
         return "trade/update";
     }
 
+    /**
+     * POST request for updating a trade
+     * @param id id of the trade to update
+     * @param trade trade object
+     * @param result result of validation
+     * @param model model object
+     * @return page of the list of trades or page to update trade
+     * @throws IllegalAccessException if trade can't be updated
+     */
     @PostMapping("/trade/update/{id}")
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
                               BindingResult result, Model model) {
@@ -65,6 +102,12 @@ public class TradeController {
         return "redirect:/trade/list";
     }
 
+    /**
+     * POST request for deleting a trade
+     * @param id id of the trade to delete
+     * @param model model object
+     * @return page of the list of trades
+     */
     @GetMapping("/trade/delete/{id}")
     public String deleteTrade(@PathVariable("id") Integer id, Model model) {
         List<Trade> trades = tradeService.deleteTrade(id);

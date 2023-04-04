@@ -3,10 +3,12 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+/**
+ * Entity class representing a bidList in the database
+ */
 @Entity
 @Table(name = "Bidlist")
 public class BidList {
-    // TODO: Map columns in data table BIDLIST with corresponding java fields
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

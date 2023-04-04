@@ -12,6 +12,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests for the {@link CurveService} class
+ *
+ * To run these tests, you need to use a Spring test runner
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class CurvePointTests {
@@ -21,12 +26,18 @@ public class CurvePointTests {
 	@Autowired
 	private CurvePointRepository curvePointRepository;
 
+	/**
+	 * Deletes all curve points before each test
+	 */
 	@BeforeEach
 	void setup() {
 		curvePointRepository.deleteAll();
 		curvePointRepository.flush();
 	}
 
+	/**
+	 * Test saveCurvePoint method
+	 */
 	@Test
 	public void saveCurvePointTest() {
 		CurvePoint curvePoint = new CurvePoint();
@@ -40,6 +51,9 @@ public class CurvePointTests {
 		assertEquals(10, newCurvePoint.getCurveId(), 0.0001d);
 	}
 
+	/**
+	 * Test updateCurvePoint method
+	 */
 	@Test
 	public void updateCurvePointTest() throws IllegalAccessException {
 		CurvePoint curvePoint = new CurvePoint();
@@ -60,6 +74,9 @@ public class CurvePointTests {
 		assertEquals(20, updatedcurvePoint.getCurveId(), 0.0001d);
 	}
 
+	/**
+	 * Test findAll method
+	 */
 	@Test
 	public void findAllTest() {
 		CurvePoint firstCurvePoint = new CurvePoint();
@@ -76,7 +93,10 @@ public class CurvePointTests {
 
 		assertTrue(curveService.getAllCurve().size() > 0);
 	}
-//
+
+	/**
+	 * Test deleteCurvePoint method
+	 */
 	@Test
 	public void deleteCurvePointTest() {
 		CurvePoint firstCurvePoint = new CurvePoint();

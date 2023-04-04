@@ -15,6 +15,9 @@ import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Controller requests related to the {@link User} entity.
+ */
 @RolesAllowed("ADMIN")
 @Controller
 public class UserController {

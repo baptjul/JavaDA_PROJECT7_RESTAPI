@@ -9,6 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
+/**
+ * Configuration class for Spring Security.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,11 +23,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
+    /**
+     * Configures the authentication manager
+     *
+     * @param auth authentication manager
+     * @throws Exception if error while configuring
+     */
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    /**
+     * Configures HTTP security
+     *
+     * @param http HTTP security object
+     * @throws Exception if error while configuring
+     */
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http

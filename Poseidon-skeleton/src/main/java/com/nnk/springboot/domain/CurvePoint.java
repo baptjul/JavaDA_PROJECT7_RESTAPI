@@ -3,6 +3,9 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * Entity class representing a curve point in the database
+ */
 @Entity
 @Table(name = "Curvepoint")
 public class CurvePoint {
@@ -14,7 +17,6 @@ public class CurvePoint {
     @Column(name = "CurveId")
     private Integer curveId;
     @Column(name = "asOfDate")
-    //@Temporal(TemporalType.TIMESTAMP)
     private Date asOfDate;
     @Column(name = "term")
     private Double term;

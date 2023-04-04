@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Service class for managing user operations
+ */
 @Service
 public class UserService implements UserDetailsService {
 
@@ -21,6 +24,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Loads the user by username
+     * @param username
+     * @return user details
+     * @throws UsernameNotFoundException if invalid username
+     */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -29,14 +38,28 @@ public class UserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Collections.singleton(new SimpleGrantedAuthority(user.getRole())));
     }
 
+    /**
+     * Gets a list of all users.
+     * @return the list of users.
+     */
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    /**
+     * Gets a user
+     * @param id the ID of the user
+     * @return a single user or null
+     */
     public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Adds a new user
+     * @param user user to add
+     * @return the added user or null if username already exist
+     */
     public User addUser(User user) {
         List<User> allUser = getAllUsers();
         for (User existingUser : allUser) {
@@ -48,6 +71,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
+    /**
+     * Updates a user
+     * @param id the ID of the user
+     * @param updatedUser the updated user
+     * @return the updated user
+     */
     public User updateUser(Integer id, User updatedUser) {
         User targetedUser = getUserById(id);
 
@@ -61,6 +90,11 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    /**
+     * Deletes a user
+     * @param id the ID of the user
+     * @return the list of all users
+     */
     public List<User> deleteUser(Integer id) {
         User targetedUser = getUserById(id);
         if (targetedUser != null) {

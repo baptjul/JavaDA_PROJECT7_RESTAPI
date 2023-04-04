@@ -2,6 +2,9 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 
+/**
+ * Entity class representing a rulename in the database
+ */
 @Entity
 @Table(name = "Rulename")
 public class RuleName {
