@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 /**
@@ -14,13 +16,17 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private Integer id;
+    @NotNull(message = "Must not be null")
     @Column(name = "CurveId")
+    @Min(value = 0)
     private Integer curveId;
     @Column(name = "asOfDate")
     private Date asOfDate;
     @Column(name = "term")
+    @Min(value = 0)
     private Double term;
     @Column(name = "value")
+    @Min(value = 0)
     private Double value;
     @Column(name = "creationDate")
     private Date creationDate;

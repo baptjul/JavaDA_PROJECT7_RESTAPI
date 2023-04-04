@@ -19,25 +19,29 @@
             <div class=" form-group">
                 <label for="moodysRating" class="col-sm-2 col-form-label">Moody's Rating</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" required id="moodysRating" th:field="*{moodysRating}"/>
+                    <input type="text" class="form-control" id="moodysRating" th:field="*{moodysRating}"/>
+                    <span class="error-message text-danger" th:if="${#fields.hasErrors('moodysRating')}" th:errors="*{moodysRating}"></span>
                 </div>
             </div>
             <div class=" form-group">
                 <label for="sandPRating" class="col-sm-2 col-form-label">Sand P Rating</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" required id="sandPRating" th:field="*{sandPRating}"/>
+                    <input type="text" class="form-control" id="sandPRating" th:field="*{sandPRating}"/>
+                    <span class="error-message text-danger" th:if="${#fields.hasErrors('sandPRating')}" th:errors="*{sandPRating}"></span>
                 </div>
             </div>
             <div class=" form-group">
                 <label for="fitchRating" class="col-sm-2 col-form-label">Fitch Rating</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" required id="fitchRating" th:field="*{fitchRating}"/>
+                    <input type="text" class="form-control" id="fitchRating" th:field="*{fitchRating}"/>
+                    <span class="error-message text-danger" th:if="${#fields.hasErrors('fitchRating')}" th:errors="*{fitchRating}"></span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="orderNumber" class="col-sm-2 col-form-label">Order Number</label>
                 <div class="col-sm-5">
-                    <input type="number" class="form-control" required id="orderNumber" th:field="*{orderNumber}"/>
+                    <input type="number" class="form-control" id="orderNumber" th:field="*{orderNumber}"/>
+                    <span class="error-message text-danger" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></span>
                 </div>
             </div>
             <div class="form-group">

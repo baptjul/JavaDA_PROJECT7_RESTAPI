@@ -1,6 +1,10 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 /**
@@ -14,47 +18,67 @@ public class BidList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BidListId")
     private Integer bidListId;
+    @NotBlank(message = "Account is mandatory")
     @Column(name = "account", nullable = false)
+    @Size(max = 100)
     private String account;
+    @NotBlank(message = "Type is mandatory")
     @Column(name = "type", nullable = false)
+    @Size(max = 100)
     private String type;
     @Column(name = "bidQuantity")
+    @Min(value = 0)
     private Double bidQuantity;
     @Column(name = "askQuantity")
+    @Min(value = 0)
     private Double askQuantity;
     @Column(name = "bid")
+    @Min(value = 0)
     private Double bid;
     @Column(name = "ask")
+    @Min(value = 0)
     private Double ask;
     @Column(name = "benchmark")
+    @Size(max = 100)
     private String benchmark;
     @Column(name = "bidListDate")
     private Timestamp bidListDate;
     @Column(name = "commentary")
+    @Size(max = 100)
     private String commentary;
     @Column(name = "security")
+    @Size(max = 100)
     private String security;
     @Column(name = "status")
+    @Size(max = 100)
     private String status;
     @Column(name = "trader")
+    @Size(max = 100)
     private String trader;
     @Column(name = "book")
+    @Size(max = 100)
     private String book;
     @Column(name = "creationName")
+    @Size(max = 100)
     private String creationName;
     @Column(name = "creationDate")
     private Timestamp creationDate;
     @Column(name = "revisionName")
+    @Size(max = 100)
     private String revisionName;
     @Column(name = "revisionDate")
     private Timestamp revisionDate;
     @Column(name = "dealName")
+    @Size(max = 100)
     private String dealName;
     @Column(name = "dealType")
+    @Size(max = 100)
     private String dealType;
     @Column(name = "sourceListId")
+    @Size(max = 100)
     private String sourceListId;
     @Column(name = "side")
+    @Size(max = 100)
     private String side;
 
     public Integer getBidListId() {

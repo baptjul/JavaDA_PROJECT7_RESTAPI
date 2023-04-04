@@ -1,6 +1,7 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
+import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.services.BidListService;
 import com.nnk.springboot.services.CurveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,14 +59,13 @@ public class BidListController {
      */
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
-            BidList newBidList = bidListService.addBidForm(bid);
-            model.addAttribute("bidList", newBidList);
-            return this.home(model);
-        } else {
+        if (result.hasErrors()) {
             model.addAttribute("bidList", bid);
             return "bidList/add";
         }
+        BidList newBidList = bidListService.addBidForm(bid);
+        model.addAttribute("bidList", newBidList);
+        return this.home(model);
     }
 
     /**

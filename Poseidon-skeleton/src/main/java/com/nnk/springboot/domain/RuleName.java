@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Entity class representing a rulename in the database
@@ -13,8 +14,10 @@ public class RuleName {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private Integer id;
+    @NotBlank(message = "Must not be empty")
     @Column(name = "name")
     private String name;
+    @NotBlank(message = "Must not be empty")
     @Column(name = "description")
     private String description;
     @Column(name = "json")

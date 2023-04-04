@@ -1,6 +1,9 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity class representing a rating in the database
@@ -13,13 +16,18 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private Integer id;
+    @NotBlank(message = "Must not be empty")
     @Column(name = "moodysRating", nullable = false)
     private String moodysRating;
+    @NotBlank(message = "Must not be empty")
     @Column(name = "sandPRating", nullable = false)
     private String sandPRating;
+    @NotBlank(message = "Must not be empty")
     @Column(name = "fitchRating", nullable = false)
     private String fitchRating;
+    @NotNull(message = "Must not be null")
     @Column(name = "orderNumber", nullable = false)
+    @Min(value = 0)
     private Integer orderNumber;
 
     public Integer getId() {

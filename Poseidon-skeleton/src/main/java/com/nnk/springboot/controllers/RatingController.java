@@ -60,7 +60,7 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("rating", rating);
-            return "curvePoint/add";
+            return "rating/add";
         }
         Rating newRating = ratingService.saveRating(rating);
         model.addAttribute("rating", newRating);
