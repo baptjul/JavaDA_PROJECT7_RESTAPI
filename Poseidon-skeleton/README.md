@@ -20,10 +20,8 @@
 Make sure to replace localhost with your MySQL server hostname and 3306 with your MySQL server port
 
 5. Run sql script to create table doc/data.sql
-    - basic user : 
-	- username: user / password: password
-    - admin user :
-	- username: admin / password: password
+    - basic user : username: user / password: password
+    - admin user : username: admin / password: password
 
 ## Implement a Feature
 1. Create mapping domain class and place in package com.nnk.springboot.domain
